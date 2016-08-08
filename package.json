@@ -9,8 +9,10 @@
   "author": "Eduardo Campos",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.14.0",
     "gulp": "^3.9.1",
+    "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.3.2",
-    "node-bourbon": "^4.2.8",
+    "node-bourbon": "^4.2.8"
   }
 }

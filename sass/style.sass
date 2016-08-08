@@ -3,6 +3,15 @@
 @import "spinner"
 
 // ===============================
+// Fonts
+// ===============================
+
++font-face("montserrat", "../assets/fonts/Montserrat-Regular", $file-formats:ttf)
++font-face("montserrat", "../assets/fonts/Montserrat-Bold", bold, $file-formats:ttf)
++font-face("montserrat", "../assets/fonts/Montserrat-Light", light, $file-formats:ttf)
+
+
+// ===============================
 // Variables
 // ===============================
 
@@ -23,22 +32,21 @@ $bgcolor: rgb(235,235,235)
 
 %skill-color
 	background: white
-
+	
 
 // ===============================
-// Body
+// Globals
 // ===============================
 
 body 
-	font-family: 'Open Sans', sans-serif
-	color: #6d6d6d
+	font-family: 'montserrat', sans-serif
 
 h3
 	@extend %small-bold
-	font-size: 18px
+	font-size: 28px
 	color: $accent
 	text-align: center
-	padding: 20px
+	padding: 40px
 
 .alt-section
 	background-color: $bgcolor
@@ -50,66 +58,127 @@ a
 // Header and Nav
 // ===============================
 
-header
-	height: 560px
-	background: url(../assets/bg.jpg) no-repeat center center /  cover
-	color: white
-
-	.logo 
-		+size(50px)
-		float: left
-		margin: 10px 0 0 30px
-
-		svg
-		 	fill: rgba(255,255,255,0.7)
-
-	nav
-		float: right
-		margin: 30px 30px 0 0 
-
-		a
+nav
+	position: fixed
+	right: 0px
+	margin: 10px 20px 0 0
+	z-index: 999
+	color: rgba(white, 0.7)
+	
+	.nav--container
+		+display(flex)
+		+flex-direction(column)
+		text-align: right
+		padding: 8px 0
+		border-radius: 2px
+		
+		.dot
 			display: inline-block
-			margin-left: 20px
-			color: rgba(255,255,255,0.7)
-			text-decoration: none
-			@extend %small-bold
+			position: absolute
+			right: 5px
+			margin-top: 6px
+			+size(10px)
+			border-radius: 50px
+			border: 2px solid rgba(white, 0.7)
 			+transition()
 
 			&:hover
-				color: rgba(255,255,255,1)
+				background-color: rgba(white, 0.5)
 
-	h1
-		text-align: center
-		font:
-			size: 76px
-			weight: 700
-		color: white
-		text-transform: uppercase
-		letter-spacing: 0.05em
-		margin-bottom: 10px
-		clear: both
-		padding-top: 100px
 
-		span
+		a
 			display: inline-block
-			padding: 0.1em 0.2em
-			border: white solid 10px
-
-		@media screen and (max-width: 824px)
-			font-size: 48px
-
-	.kicker
-		text-align: center
-		font: 
-			size: 38px
-		text-transform: uppercase
-		line-height: 1
-		letter-spacing: 0.05em
-		color: white
-		margin-top: 20px
+			color: rgba(white, 0.7)
+			line-height: 1.8
+			margin-right: 30px
+			text-decoration: none
+			@extend %small-bold
+			+transition()
 		
-		@media screen and (max-width: 824px)
-			font-size: 24px
+				
+			&:hover
+				color: rgba(white, 1)
+				
+				.dot
+					background-color: rgba(white, 0.5)
+					
+	.is-dark
+		a
+			color: rgba(darken($bgcolor,70%), 0.7)
+		
+			&:hover
+				color: rgba(darken($bgcolor,70%), 1)
+				
+				.dot
+					background-color: rgba(darken($bgcolor,70%), 0.8) 
+
+			
+		.dot
+			border: 2px solid rgba(darken($bgcolor,70%), 0.7)
+		
+			&:hover
+				border: 2px solid rgba(darken($bgcolor,70%), 1)
+				background-color: rgba(darken($bgcolor,70%), 0.8) 		
+
+header
+	height: 100vh
+	min-height: 560px
+	background: url(../assets/bg.jpg) no-repeat center center /  cover
+	color: white
+	+display(flex)
+	+flex-flow(column nowrap)
+	+justify-content(center)
+	+align-items(center)
+	z-index: -1
+
+	.header-overlay
+		position: absolute
+		height: 100vh
+		min-height: 560px
+		width: 100%
+		background-color: rgba(black,0.2)
+		z-index: 0
+
+	.title-container
+		z-index: 1
+		
+		h1
+			text-align: center
+			font:
+				size: 76px
+				weight: 700
+			color: white
+			text-transform: uppercase
+			letter-spacing: 0.05em
+			margin-bottom: 10px
+			opacity: 0
+
+			span
+				display: block
+				padding: 0.1em 0.2em
+				border: white solid 10px
+				border-radius: 2px
+
+			@media screen and (max-width: 824px)
+				font-size: 48px
+			
+			@media screen and (max-width: 516px)
+				display: inline-block
+				margin: 0 40px
+
+		.kicker
+			text-align: center
+			font: 
+				size: 38px
+			text-transform: uppercase
+			line-height: 1
+			letter-spacing: 0.05em
+			color: white
+			margin-top: 20px
+			opacity: 0
+			
+			@media screen and (max-width: 824px)
+				font-size: 24px
 
 
 
@@ -117,11 +186,14 @@ header
 // About Section
 // ===============================
 
+#about-me
+	min-height: 560px;
+	padding-bottom: 40px
 
 .face-lockup
 	max-width: 780px
 	+display(flex)
-	margin: 0 auto
+	margin: 40px auto
 	+align-items(center)
 	+justify-content(space-between)
 
@@ -176,8 +248,11 @@ header
 	margin: 50px auto
 	font-size: 24px
 	text-align: center
-	font-weight: 300s
+	font-weight: light
 	line-height: 2em
+	
+	strong
+		font-weight: bold
 
 
 
@@ -186,40 +261,42 @@ header
 // ===============================
 
 .skill-section
+	min-height: 560px
 	padding-bottom: 30px
+	
+	h3
+		padding-top: 100px
+		
+.skill-progress
+    position: relative
+    left: -10px
+    width: 100%
+    height: 20px
+    background-color: white
+    border-radius: 5px
+    margin-top: 5px
+
+
+@for $i from 1 through 10
+	.skill-#{$i} 
+		position: absolute
+		width: percentage($i/10)
+		height: 100%
+		background-color: $accent
+
+
+	
 
 .skill-lockup
 	max-width: 800px
-	margin: 25px auto
-	color: #white
+	margin: 40px auto
 	+clearfix
 
 	.skill-unit
 		width: 360px
 		float: left
-		padding: 0 20px
+		padding: 12px 20px
 
-
-	.skill-icons
-		font-size: 0
-		margin-bottom: 0 0 20px
-		
-		span
-			display: inline-block
-			height: 16px
-			width: 36px
-			background-color: $accent
-			margin: 0 auto
-
-		&:after
-			content: ''
-			display: block
-			+size(10px)
-			background: $bgcolor
-
-	@for $i from 1 through 10
-		.skill-#{$i} span:nth-child(n+#{$i + 1})
-			@extend %skill-color
 
 @media screen and (max-width: 801px)
 	.skill-lockup
@@ -233,8 +310,10 @@ header
 // ===============================
 
 .section-work
+	min-height: 50vh
 	overflow-x: hidden
-
+	padding-bottom: 100px
+	
 .work-belt
 	width: 200%
 	position: relative
@@ -247,24 +326,27 @@ header
 	margin-bottom: 20px
 
 .thumb-container
-	max-width: 960px
-	margin: 0 auto
-	padding-bottom: 40px
-	+clearfix
+	+display(flex)
+	+justify-content(space-around)
+	+align-items(center)
+	padding: 0 40px
+	
+	@media screen and (max-width: 801px)
+		+flex-direction(column)
+		padding: 0 40px
 
 	.thumb-unit
 		width: 33%
-		height: 25%
-		float: left
+		height: 28%
 		position: relative
 		padding-top: 18%
 		overflow: hidden
-		+perspective(300)
-
+		+transition(0.4s)
+		
 		@media screen and (max-width: 801px)
 			margin-top: 20px
 			width: 100%
-			padding-top: 26%
+			padding-top: 33%
 
 @for $i from 1 through 6
 	.thumb-#{$i}
@@ -273,9 +355,9 @@ header
 			position: center center
 			repeat: no-repeat
 			size: cover
-
+			
 		.thumb-overlay
-			+position(absolute, -100% 0px null 0px)
+			+position(absolute, 0% 0px null 0px)
 			height: 100%
 			background: fade-out($accent, 0.1)
 			text-align: center
@@ -284,13 +366,12 @@ header
 			+align-items(center)
 			+justify-content(space-around)
 			opacity: 0
-			// +transform(rotateX(90deg))
 
 			strong
 				padding: 20px 20px
 				display: block
 				color: $accent-dark
-				font-weight: 300
+				font-weight: light
 				text-transform: uppercase
 				color: $bgcolor
 				font-size: 26px
@@ -319,7 +400,7 @@ header
 			
 	h4
 		color: $accent
-		font-weight: 300
+		font-weight: light
 		font-size: 28px
 		line-height: 1.2
 		text-transform: uppercase
@@ -342,9 +423,15 @@ header
 // Contact Section
 // ===============================
 
+#contact
+	min-height: 90vh
+
 .section-contact
 	text-align: center
 	padding-bottom: 40px
+	
+	h3
+		margin-bottom: 0
 	
 .social-links
 	max-width: 500px
@@ -360,7 +447,7 @@ header
 		color: white
 		border-radius: 50%
 		font-size: 28px
-		+transition()
+		+transition(0.4s)
 
 		&:hover
 			+transform(scale(1.2))
@@ -376,26 +463,32 @@ header
 	display: inline-block
 	color: $accent
 	font:
-		size: 72px
+		size: 48px
 		weight: 300
+		style: italic
 	line-height: 1
-	+transition()
+	+transition(0.4s)
 	
 	&:hover
 		color: $accent-dark
+		
+	@media screen and (max-width: 620px)
+		font-size: 38px
 
 .section-form
 	padding-top: 40px
 
 form
 	max-width: 450px
-	margin: 0 auto 50px
+	margin: 0 auto
+	padding-bottom: 100px
 	
 	input, textarea
 		border: 3px solid $accent
 		width: 100%
 		box-sizing: border-box
-		padding: 10px		
+		padding: 10px
+		margin-top: 10px		
 
 		&:focus
 			outline: none
@@ -403,17 +496,26 @@ form
 	
 	textarea
 		height: 10em
+		margin-bottom: 10px
 
 	.submit-wrap
-		text-align: right	
+		text-align: right
+		
 
 	[type='submit']
 		background: $accent
 		color: white
 		font-size: 18px
 		text-transform: uppercase
-		width: 33%
-		
+		width: 60%
+		+display(flex)
+		+justify-content(center)
+		margin-left: auto
+		margin-right: auto
+		border-radius: 3px
+		opacity: 0
+		+transition(0.4s)
+			
 		&:hover
 			background: $accent-light
 		
@@ -443,6 +545,7 @@ form
 // ===============================
 
 footer
+	min-height: 10vh
 	background: #000 url(../assets/bg.jpg) top right / 250%
 
 	.lockup
@@ -450,15 +553,6 @@ footer
 		text-decoration: none
 		overflow: hidden
 		+clearfix
-
-
-	.logo
-		+size(50px)
-		float: left
-		margin-right: 30px
-
-		svg
-		 	fill: rgba(255,255,255,0.3)
 
 	.content-wrap
 		float: left
@@ -478,9 +572,5 @@ footer
 
 			&:hover
 				color: rgba(255,255,255,1)
-
-
-
-
-
+				
 
