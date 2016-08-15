@@ -15,8 +15,6 @@ const gulp = require('gulp'),
 	});
 
 
-
-
 	//Optimize Images
 	gulp.task('images', () =>
 		gulp.src('src/assets/**/*')
