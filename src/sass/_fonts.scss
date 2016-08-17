@@ -1,0 +1,60 @@
+@include font-face("montserrat", "../vendor/fonts/montserrat/Montserrat-Regular", $file-formats:ttf);
+@include font-face("montserrat", "../vendor/fonts/montserrat/Montserrat-Bold", bold, $file-formats:ttf);
+@include font-face("montserrat", "../vendor/fonts/montserrat/Montserrat-Light", light, $file-formats:ttf);
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../vendor/fonts/icomoon/icomoon.eot?77mkhk');
+  src:  url('../vendor/fonts/icomoon/icomoon.eot?77mkhk#iefix') format('embedded-opentype'),
+    url('../vendor/fonts/icomoon/icomoon.ttf?77mkhk') format('truetype'),
+    url('../vendor/fonts/icomoon/icomoon.woff?77mkhk') format('woff'),
+    url('../vendor/fonts/icomoon/icomoon.svg?77mkhk#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-image:before {
+  content: "\f03e";
+}
+.icon-photo:before {
+  content: "\f03e";
+}
+.icon-picture-o:before {
+  content: "\f03e";
+}
+.icon-pencil:before {
+  content: "\f040";
+}
+.icon-chevron-left:before {
+  content: "\f053";
+}
+.icon-linkedin:before {
+  content: "\f0e1";
+}
+.icon-desktop:before {
+  content: "\f108";
+}
+.icon-code:before {
+  content: "\f121";
+}
+.icon-xing:before {
+  content: "\f168";
+}
+.icon-github:before {
+  content: "\e900";
+}

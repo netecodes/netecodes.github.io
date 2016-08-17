@@ -1,0 +1,101 @@
+
+.section-work
+	min-height: 80vh
+	overflow-x: hidden
+	background-color: $white
+
+.work-belt
+	width: 200%
+	position: relative
+	left: 0%
+	+transition(all 700ms)
+
+.thumb-wrap, .work-wrap
+	width: 50%
+	float: left
+	margin-bottom: 5vh
+
+.thumb-container
+	margin: 0 auto
+	+display(flex)
+	+align-items(center)
+	+justify-content(center)
+	+flex-wrap(wrap)
+
+	.thumb-unit
+		width: 30vh
+		height: 20vh
+		position: relative
+		padding: 6vh 3vh
+		margin: 2vh
+		overflow: hidden
+		+transition(0.4s)
+
+@for $i from 1 through 6
+	.thumb-#{$i}
+		background:
+			image: url(../assets/proj-#{$i}/thumb.jpg)
+			position: center center
+			repeat: no-repeat
+			size: cover
+
+		.thumb-overlay
+			+position(absolute, 0% 0px null 0px)
+			height: 100%
+			background: fade-out($accent, 0.1)
+			text-align: center
+			+transition(0.4s)
+			+display(flex)
+			+align-items(center)
+			+justify-content(center)
+			opacity: 0
+
+			strong
+				display: block
+				color: $accent-dark
+				font-weight: light
+				text-transform: uppercase
+				color: $main
+				font-size: 26px
+				line-height: 1.2
+				letter-spacing: 2px
+
+		&:hover .thumb-overlay
+			+position(absolute, 0% 0px 0px 0px)
+			opacity: 1
+
+
+.work-container
+	width: 60vh
+	margin: 0px auto
+	position: relative
+	display: none
+
+	.work-return
+		font-size: 28px
+		color: rgba(0,0,0,0.4)
+		+position(absolute, 4px null null -35px)
+		cursor: pointer
+
+		&:hover
+			opacity: 0.7
+
+	h4
+		color: $accent
+		font-weight: light
+		font-size: 28px
+		line-height: 1.2
+		text-transform: uppercase
+		margin 0 0 20px
+
+	img
+		max-width: 100%
+
+@media screen and (max-width: 801px)
+
+	.work-container
+		.work-return
+			left: 0px
+
+		h4
+			margin-left: 35px
