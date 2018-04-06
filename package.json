@@ -4,20 +4,21 @@
   "description": "my personal portfolio site",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp"
   },
   "author": "Eduardo Campos",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.14.0",
+    "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
-    "gulp-clean-css": "^2.0.12",
+    "gulp-clean-css": "^2.4.0",
+    "gulp-cli": "^2.0.1",
     "gulp-htmlmin": "^2.0.0",
-    "gulp-imagemin": "^3.0.3",
-    "gulp-plumber": "^1.1.0",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-plumber": "^1.2.0",
     "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^2.0.0",
+    "gulp-sourcemaps": "^1.12.1",
+    "gulp-uglify": "^2.1.2",
     "node-bourbon": "^4.2.8"
   }
 }
